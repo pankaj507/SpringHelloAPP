@@ -5,7 +5,7 @@ pipeline {
       maven 'Maven3'
     }
     environment {
-        APP_NAME = "SpringHelloAPP-ci-image"
+        APP_NAME = "springhellowebapp"
         RELEASE = "1.0.0"
         DOCKER_USER = "pankajprakashe"
         DOCKER_PASS = 'dockerhub'
