@@ -5,12 +5,12 @@ pipeline {
       maven 'Maven3'
     }
     envionment{
-        APP_NAME = "SpringHelloAPP-ci"
+        APP_NAME = "SpringHelloAPP-ci-image"
         RELEASE = "1.0.0"
         DOCKER_USER = "pankajkumarprakashe@gmail.com"
-        DOCKER_PASS = "Ngp$20221"
+        DOCKER_PASS = 'Ngp$20221'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
-        IMAGE_TAG = "${RELEASE-${BUILD_NUMBER}"
+        IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
     }
     stages{
         stage("Cleanup workspace"){
