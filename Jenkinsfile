@@ -5,14 +5,26 @@ pipeline {
       maven 'Maven3'
     }
     stages{
-      stage("Cleanup workspace"){
-        steps{
-          CleanWs()
+          stage("Cleanup workspace"){
+            steps{
+              CleanWs()
+            }
         }
-      }
-    stage("Checkout from SCM"){
-        stesps{
-          git branch: 'main', crenentialsId: 'github', url: 'https://github.com/pankaj507/SpringHelloAPP'
-    
-
+        stage("Checkout from SCM"){
+            steps{
+              git branch: 'main', credentialsId: 'github', url: 'https://github.com/pankaj507/SpringHelloAPP'
+            }
+        } 
+        stage("Build Application"){
+            steps{
+              sh "mvn clean package"
+            }
+        } 
+        stage("Test Application"){
+            steps{
+              sh "mvn test"
+            }
+        } 
+    }
+}
   
