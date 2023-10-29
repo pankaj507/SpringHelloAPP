@@ -48,7 +48,15 @@ pipeline {
                         }                   
                    }  
             }
-         }        
+         }
+        stage("Clean Artifacts"){
+            steps{
+               script {
+                   bat "docker rmi ${IMAGE_NAME}:${IMAGE_TAG}"
+                   bat "docker rmi ${IMAGE_NAME}:latest"
+               }
+            }
+        }
     }
 }
   
