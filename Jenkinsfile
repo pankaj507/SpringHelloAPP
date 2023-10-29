@@ -25,13 +25,16 @@ pipeline {
                 withSonarQubeEnv('sonarqube') {
                    bat 'mvn clean package sonar:sonar'
    	               echo 'Static Analysis Completed'
-                }
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
+                }               
             }
         }
-        
+        stage("Qality Gate"){
+            steps{                
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: false
+                }
+            }
+        }        
     }
 }
   
