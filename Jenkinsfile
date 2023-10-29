@@ -11,7 +11,7 @@ pipeline {
         }
         stage("Checkout from SCM"){
             steps{
-              git branch: 'main', credentialsId: 'github', url: 'https://github.com/pankaj507/SpringHelloAPP'
+              git branch: 'master', credentialsId: 'github', url: 'https://github.com/pankaj507/SpringHelloAPP'
             }
         } 
         stage("Build Application"){
