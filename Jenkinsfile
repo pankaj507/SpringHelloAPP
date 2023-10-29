@@ -40,7 +40,19 @@ pipeline {
    	               echo 'Static Analysis Completed'
                 }               
             }
-        }                
+        }  
+        stage("Build and Push Docker Image"){
+            steps{
+                 docker.withRegistry(''. DOCKER_PASS){
+                     docker_image = docker.build "${IMAGE_NAMR}"
+                 }
+                docker.withRegistry(''. DOCKER_PASS){
+                    docker_image.push("${IMAGE_TAG}")
+                    docker_image.push('latest')
+                }                   
+              }               
+          }
+        } 
     }
 }
   
