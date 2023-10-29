@@ -26,8 +26,12 @@ pipeline {
                    bat 'mvn clean package sonar:sonar'
    	               echo 'Static Analysis Completed'
                 }
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
-        } 
+        }
+        
     }
 }
   
