@@ -4,7 +4,20 @@ pipeline {
       jdk 'Java17'
       maven 'Maven3'
     }
-    stages{          
+    envionment{
+        APP_NAME = "SpringHelloAPP-ci"
+        RELEASE = "1.0.0"
+        DOCKER_USER = "pankajkumarprakashe@gmail.com"
+        DOCKER_PASS = "Ngp$20221"
+        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
+        IMAGE_TAG = "${RELEASE-${BUILD_NUMBER}"
+    }
+    stages{
+        stage("Cleanup workspace"){
+            steps{
+             clearWs()
+            }
+        }
         stage("Checkout from SCM"){
             steps{
               git branch: 'master', credentialsId: 'github', url: 'https://github.com/pankaj507/SpringHelloAPP'
@@ -27,14 +40,7 @@ pipeline {
    	               echo 'Static Analysis Completed'
                 }               
             }
-        }
-        stage("Quality Gate"){
-            steps{                
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: false
-                }
-            }
-        }        
+        }                
     }
 }
   
