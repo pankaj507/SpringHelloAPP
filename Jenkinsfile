@@ -20,6 +20,14 @@ pipeline {
               bat "mvn test"
             }
         } 
+        stage("Static Analysis"){
+            steps{
+                withSonarQubeEnv('SonarQube1') {
+                   bat 'mvn clean package sonar:sonar'
+   	               echo 'Static Analysis Completed'
+                }
+            }
+        } 
     }
 }
   
