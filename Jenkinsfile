@@ -8,7 +8,7 @@ pipeline {
         APP_NAME = "SpringHelloAPP-ci-image"
         RELEASE = "1.0.0"
         DOCKER_USER = "pankajkumarprakashe@gmail.com"
-        DOCKER_PASS = 'dockerhub'
+        DOCKER_PASS = 'Ngp$20221'
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
     }
