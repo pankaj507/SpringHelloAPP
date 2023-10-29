@@ -22,7 +22,7 @@ pipeline {
         } 
         stage("Static Analysis"){
             steps{
-                withSonarQubeEnv('SonarQube1') {
+                withSonarQubeEnv('sonarqube') {
                    bat 'mvn clean package sonar:sonar'
    	               echo 'Static Analysis Completed'
                 }
