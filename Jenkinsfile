@@ -4,7 +4,7 @@ pipeline {
       jdk 'Java17'
       maven 'Maven3'
     }
-    envionment{
+    environment {
         APP_NAME = "SpringHelloAPP-ci-image"
         RELEASE = "1.0.0"
         DOCKER_USER = "pankajkumarprakashe@gmail.com"
